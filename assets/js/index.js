@@ -26,53 +26,24 @@ botonRegistrar.addEventListener("click", () => {
   const animalData = arrayAnimales.find((animal) => animal.name === nombre);
   let nuevoAnimal;
 
-  switch (nombre) {
-    case "Leon":
-      nuevoAnimal = new Leon(
-        nombre,
-        edad,
-        animalData.imagen,
-        comentarios,
-        animalData.sonido
-      );
-      break;
-    case "Lobo":
-      nuevoAnimal = new Lobo(
-        nombre,
-        edad,
-        animalData.imagen,
-        comentarios,
-        animalData.sonido
-      );
-      break;
-    case "Oso":
-      nuevoAnimal = new Oso(
-        nombre,
-        edad,
-        animalData.imagen,
-        comentarios,
-        animalData.sonido
-      );
-      break;
-    case "Serpiente":
-      nuevoAnimal = new Serpiente(
-        nombre,
-        edad,
-        animalData.imagen,
-        comentarios,
-        animalData.sonido
-      );
-      break;
-    case "Aguila":
-      nuevoAnimal = new Aguila(
-        nombre,
-        edad,
-        animalData.imagen,
-        comentarios,
-        animalData.sonido
-      );
-      break;
-  }
+const animalClasses = {
+  "Leon": Leon,
+  "Lobo": Lobo,
+  "Oso": Oso,
+  "Serpiente": Serpiente,
+  "Aguila": Aguila
+};
+
+if (animalClasses[nombre]) {
+  const AnimalClass = animalClasses[nombre];
+  nuevoAnimal = new AnimalClass(
+    nombre,
+    edad,
+    animalData.imagen,
+    comentarios,
+    animalData.sonido
+  );
+}
 
   arrayInstanciados.push(nuevoAnimal);
   printCard();
