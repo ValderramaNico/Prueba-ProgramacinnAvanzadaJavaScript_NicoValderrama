@@ -1,3 +1,5 @@
+export const arrayAnimales = [];
+
 export async function fetchImages() {
   try {
     const response = await fetch("animales.json");
@@ -8,8 +10,13 @@ export async function fetchImages() {
       };
     }
     const data = await response.json();
-    return data.animales;
+    data.animales.forEach((animal) => {
+      arrayAnimales.push(animal);
+    });
   } catch (error) {
     console.log(error);
   }
 }
+
+// Ejecutar fetchImages al cargar el módulo
+fetchImages();

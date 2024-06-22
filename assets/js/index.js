@@ -1,17 +1,9 @@
 import { Animal, Leon, Lobo, Oso, Serpiente, Aguila } from "./clases.js";
-import { fetchImages } from "./fetchImages.js";
+import { arrayAnimales } from "./fetchImages.js";
 import { validateForm, resetForm } from "./formValidator.js";
 
 const botonRegistrar = document.getElementById("btnRegistrar");
-const arrayAnimales = [];
 const arrayInstanciados = [];
-
-  (async () => {
-    const animales = await fetchImages();
-    animales.forEach((animal) => {
-      arrayAnimales.push(animal);
-    });
-  })();
 
 botonRegistrar.addEventListener("click", () => {
   const nombre = document.getElementById("animal").value;
